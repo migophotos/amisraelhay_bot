@@ -1,6 +1,6 @@
 # Multilanguage Telegram Bot
 
-This bot will help you quickly find the information you need during Israel's war with Hamas.
+This bot contains links to online resources that may be useful to you during Israel's war against Hamas
 ---
 > Directory structure and file locations
 
