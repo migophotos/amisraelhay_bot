@@ -1,0 +1,107 @@
+from database.sql import DataBase
+
+
+MESSAGES_RU = {
+    "hello": "Здравствуйте",
+    "your_role": "Ваша роль",
+    "your_lang": "Язык общения",
+    "your_id": "Ваш код",
+    "about_bot": 'Этот бот содержит ссылки на онлайн ресурсы, которые могут быть полезны вам во время войны Израиля против Хамаса',
+    "lang_text": 'Используйте команду /language для выбора языка общения и отображения иинформации',
+    "admin_text": 'Используйте команду /admin для установки времени отправки сообщений и управления сообщениями',
+    "preferred_language": 'Вы выбрали Русский язык, выполните команду /profile для проверки',
+    "change_language": 'Выберите Язык Общения',
+    "no_rights": '<b>Здравствуйте {0}!</b>\nК сожалению у вас нет прав доступа к этой команде....\n<b>Досвидания!</b>',
+    "admin_panel": 'Панель администратора',
+    "scheduler_manage": 'Планировщик...',
+    "content_manage": 'Контент...',
+    "start_scheduler": 'Запустить планировщик',
+    "restart_scheduler": 'Перезапустить планировщик',
+    "stop_scheduler": 'Остановить планировщик',
+    "unknown_cmd": 'Неизвестная команда, проверьте синтаксис!',
+    "select_content_type": 'Выберите тип контента',
+    "openai": 'Автоматически генерировать с помощью OpenAI',
+    "external_csv": 'Внешний CSV-файл',
+    "external_json": 'Внешний JSON файл',
+    "back_to_admin": 'Вернуться в панель администратора',
+    "ru_prompt": 'Обновить Русский промпт',
+    "en_prompt": 'Обновить Английский промпт',
+    "he_prompt": 'Обновить промпт для Иврита',
+}
+
+MESSAGES_EN = {
+    "hello": "Hello",
+    "your_role": "Your role",
+    "your_lang": "Your language",
+    "your_id": "Your ID",
+    "about_bot": "This bot contains links to online resources that may be useful to you during Israel's war against Hamas",
+    "lang_text": 'Use the /language command to select a language for communication and display information.',
+    "admin_text": 'Use the /admin command to set the time of sending messages and to manage messages',
+    "preferred_language": 'You have selected an English language, run the /profile command to check',
+    "change_language": 'Select Language of Communication',
+    "no_rights": '<b>Hello {0}!</b>\nUnfortunately, you do not have access rights to this command....\n<b>Goodbye!</b>',
+    "admin_panel": 'Admin Panel',
+    "scheduler_manage": 'Scheduler...',
+    "content_manage": 'Content...',
+    "start_scheduler": 'Start Scheduler',
+    "restart_scheduler": 'Restart Scheduler',
+    "stop_scheduler": 'Stop Scheduler',
+    "unknown_cmd": 'Unknown command, check the syntax!',
+    "select_content_type": 'Select content type',
+    "openai": 'Automatically generate with OpenAI',
+    "external_csv": 'External CSV file',
+    "external_json": 'External JSON file',
+    "back_to_admin": 'Return to Admin panel',
+    "ru_prompt": 'Update Russian Prompt',
+    "en_prompt": 'Update English Prompt',
+    "he_prompt": 'Update Hebrew Prompt',
+}
+
+MESSAGES_HE = {
+    "hello": "שלום",
+    "your_role": "התפקיד שלך",
+    "your_lang": "שפת התקשורת",
+    "your_id": "הקוד שלך",
+    "about_bot": 'בוט זה מכיל קישורים למשאבים מקוונים שעשויים להיות שימושיים עבורך במהלך המלחמה של ישראל נגד חמאס',
+    "lang_text": 'השתמש בפקודה /language כדי לבחור את שפת התקשורת ולהציג מידע',
+    "admin_text": 'השתמש בפקודה /admin כדי להגדיר את שעת שליחת ההודעות ולניהול הודעות',
+    "preferred_language": 'בחרת בשפה העברית, הפעל את הפקודה /profile כדי לבדוק',
+    "change_language": 'בחר שפת תקשורת',
+    "no_rights": '<b>שלום {0}!</b>\nלמרבה הצער, אין לך זכויות גישה לפקודה זו...\n<b>להתראות!</b>',
+    "admin_panel": 'פאנל ניהול',
+    "scheduler_manage": 'מתזמן...',
+    "content_manage": 'ניהול תוכן...',
+    "start_scheduler": 'התחל את מתזמן',
+    "restart_scheduler": 'לחדש מתזמן',
+    "stop_scheduler": 'עצור את מתזמן',
+    "unknown_cmd": 'פקודה לא ידועה, בדוק את התחביר!',
+    "select_content_type": 'בחר סוג תוכן',
+    "openai": 'הפק באופן אוטומטי עם OpenAI',
+    "external_csv": 'קובץ CSV חיצוני',
+    "external_json": 'קובץ JSON חיצוני',
+    "back_to_admin": 'חזור ללוח הניהול',
+    "ru_prompt": 'עדכון הנחיה לרוסית',
+    "en_prompt": 'עדכון הנחיה לאנגלית',
+    "he_prompt": 'עדכון הנחיה לעברית',
+}
+
+
+class MultiLang:
+    def __init__(self, db: DataBase, lang: str = "en"):
+        self.lang = lang
+        self.db = db
+
+    def get_lang(self):
+        return self.lang
+
+    def set_lang(self, lang):
+        self.lang = lang
+
+    def msg(self, msg_id, lang: str = ""):
+        lang_selector = self.lang if lang == "" else lang
+        if lang_selector == "ru":
+            return MESSAGES_RU.get(msg_id)
+        elif lang_selector == "he":
+            return MESSAGES_HE.get(msg_id)
+        else:
+            return MESSAGES_EN.get(msg_id)
