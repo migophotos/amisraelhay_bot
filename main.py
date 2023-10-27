@@ -38,12 +38,12 @@ async def stop_bot(bot: Bot):
 
 
 async def start():
-    # logging.basicConfig(
-    #     level=logging.ERROR)
     logging.basicConfig(
-        level=logging.INFO,
-        format="%(asctime)s - [%(levelname)s] -  %(name)s - (%(filename)s).%(funcName)s(%(lineno)d) - %(message)s"
-    )
+        level=logging.ERROR)
+    # logging.basicConfig(
+    #     level=logging.INFO,
+    #     format="%(asctime)s - [%(levelname)s] -  %(name)s - (%(filename)s).%(funcName)s(%(lineno)d) - %(message)s"
+    # )
     bot = Bot(token=Config.bot_token, parse_mode='HTML')
     dp = Dispatcher()
 
