@@ -1,6 +1,8 @@
 # Multilanguage Telegram Bot
 
 This bot contains links to online resources that may be useful to you during Israel's war against Hamas
+
+From now it runs and anyone can access it at: https://t.me/amisraelhay_bot
 ---
 > Directory structure and file locations
 
