@@ -9,6 +9,8 @@ class Config:
     db_path: str = './database/amisraelhay_bot.db'
     admin_id: int = 565542529
 
+    bombshelters_link = "https://www.google.com/maps/d/edit?mid=1-moD7zpSwpSFLVzdoODYrhnBLq--m2I"
+
     #  Russian channel
     channel_ru_name: str = "БЗ Forever"
     channel_ru_link: str = "@flp_rus_smart_channel"

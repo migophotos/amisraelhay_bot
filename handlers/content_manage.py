@@ -22,8 +22,6 @@ async def change_content(call: CallbackQuery, callback_data: ContentCbFactory, b
     ml.set_lang(ui.get_language())
 
     buttons = [
-        InlineKeyboardButton(text=ml.msg("openai"),
-                             callback_data=ContentTypeCbFactory(type="content_selector", selected="openai").pack()),
         InlineKeyboardButton(text=ml.msg("external_csv"),
                              callback_data=ContentTypeCbFactory(type="content_selector", selected="external_csv").pack()),
         InlineKeyboardButton(text=ml.msg("external_json"),
@@ -63,12 +61,9 @@ async def content_selector(call: CallbackQuery, callback_data: ContentTypeCbFact
         await show_admin_keyboard(call.message, is_answer=False)
         return
 
-    await db.update_user(ui.get_id(), "content_type", content_type)
-    if content_type == 'openai':
-        prompt_selector_kb(ml)
-    elif content_type == 'external_csv':
-        pass
+    if content_type == 'external_csv':
+        await call.message.answer(ml.msg("load_csv_file__prompt"))
     elif content_type == 'external_json':
-        pass
+        await call.message.answer("Sorry, this option ot yet implemented")
 
     await call.answer()

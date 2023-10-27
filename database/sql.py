@@ -1,4 +1,5 @@
 from shared.config import Config
+import csv
 import sqlite3
 
 
@@ -54,7 +55,6 @@ class DataBase:
         try:
             with self.connect:
                 self.cursor.execute("""CREATE TABLE IF NOT EXISTS content(
-                id INTEGER PRIMARY KEY AUTOINCREMENT,
                 category_ru TEXT,
                 category_en TEXT,
                 category_he TEXT,
@@ -76,6 +76,12 @@ class DataBase:
         except sqlite3.Error as error:
             print("Failed to update", error)
 
+    async def import_from_csv(self, csv_data_list: list):
+        with self.connect:
+            csv_data = csv.reader(csv_data_list)
+            for row in csv_data:
+                self.cursor.execute(f"INSERT INTO content VALUES(?, ?, ?, ?, ?, ?, ?);", row)
+
     async def get_all_content(self):
         with self.connect:
             return self.cursor.execute(f"SELECT * FROM content").fetchall()
@@ -89,9 +95,9 @@ class DataBase:
         with self.connect:
             return self.cursor.execute(f"SELECT * FROM content WHERE {categories[lang]}=(?)", [category]).fetchall()
 
-    async def delete_content(self, id):
+    async def delete_content(self):
         with self.connect:
-            return self.cursor.execute("""DELETE FROM content WHERE id IN (?)""", [id]).fetchall()
+            self.cursor.execute("""DELETE FROM content""")
 
     async def add_content(self, content: tuple):
         """

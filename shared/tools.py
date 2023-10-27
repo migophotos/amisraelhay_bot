@@ -28,7 +28,10 @@ def build_start_message(ui: UserInfo, ml: MultiLang):
 
     start_message = f'{ml.msg("about_bot")}\n\n' \
                     f'{ml.msg("lang_text")}\n\n' \
-                    f'{admin_text}'
+                    f'{admin_text}\n\n' \
+                    f'<b>{ml.msg("bombshelters")}</b>\n' \
+                    f'{Config.bombshelters_link}' \
+                    f''
 
     return start_message
 
