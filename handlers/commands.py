@@ -104,6 +104,13 @@ async def load_document(message: types.Message):
         return True
 
 
+async def check_admin_rights(message: Message, name: str) -> bool:
+    if message.from_user.is_bot or message.from_user.id != Config.admin_id:
+        warning = message.bot.ml.msg("no_rights").format(name)
+        await message.answer(warning)
+        return False
+
+
 # Attention! This message handler should always remain last!
 @router.message(F.text)
 async def cmd_all_messages(msg: Message):
@@ -113,19 +120,16 @@ async def cmd_all_messages(msg: Message):
     lang = ui.get_language()
     msg.bot.ml.set_lang(lang)
 
-    if msg.from_user.is_bot or msg.from_user.id != Config.admin_id:
-        warning = msg.bot.ml.msg("no_rights").format(ui.get_first_name())
-        await msg.answer(warning)
-        return False
-
     cmd = msg.text.lower()
     if cmd.startswith("cmd:sc"):
-        await set_new_scheduler(msg.text, msg)
-        return True
+        if await check_admin_rights(msg, ui.get_first_name()):
+            await set_new_scheduler(msg.text, msg)
+            return True
 
     if cmd == 'exit:sc':
-        await show_admin_keyboard(msg)
-        return True
+        if await check_admin_rights(msg, ui.get_first_name()):
+            await show_admin_keyboard(msg)
+            return True
 
     if msg.text == msg.bot.ml.msg("show_categories"):
         await cmd_help(msg, edit_message=True)
@@ -138,7 +142,7 @@ async def cmd_all_messages(msg: Message):
         message = f"<b>{msg.text}</b>:\n\n"
         for co in content:
             if co[descr_index[lang]]:
-                message += f"{co[descr_index[lang]]} - <b>{co[link_index]}</b>\n"
+                message += f"{co[descr_index[lang]]} - <b>{co[link_index]}</b>\n\n"
         await msg.answer(message, disable_web_page_preview=True)
         return True
 
