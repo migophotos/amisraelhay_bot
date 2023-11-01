@@ -42,6 +42,10 @@ async def show_admin_keyboard(msg: Message, is_answer=True):
         buttons.append(InlineKeyboardButton(text=msg.bot.ml.msg("start_scheduler"),
             callback_data=AdminCbFactory(type="restart_scheduler", selected="").pack()))
 
+    if not msg.bot.provider.is_broadcast_to_users():
+        buttons.append(InlineKeyboardButton(text="Start Users Broadcast",
+                                            callback_data=AdminCbFactory(type="broadcast_to_users", selected="").pack()))
+
     kbd = InlineKeyboardBuilder()
     kbd.add(*buttons)
     kbd.adjust(1)
@@ -68,5 +72,9 @@ async def restart_scheduler(call: CallbackQuery, callback_data: AdminCbFactory, 
         next_run = await bot.provider.restart_scheduler()
         await call.message.answer(f"Content provider job restarted.\nNext run at: {next_run}")
         await show_admin_keyboard(call.message)
+
+    if callback_data.type == "broadcast_to_users":
+        next_run = await bot.provider.start_update_broadcast()
+        await call.message.answer(f"Broadcast to users started.\nNext run at: {next_run}")
 
     await call.answer()
