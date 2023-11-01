@@ -82,8 +82,7 @@ async def load_document(message: types.Message):
     db: DataBase = bot.db
     ui = UserInfo(db)
     await ui.init_user_info(message)  # init user info
-    lang = ui.get_language()
-    bot.ml.set_lang(lang)
+    bot.ml.set_lang(ui.get_language())
 
     if message.chat.id != Config.admin_id:
         await message.answer(bot.ml.msg("no_rights"))

@@ -11,6 +11,7 @@ class Config:
 
     bombshelters_link = "https://www.google.com/maps/d/edit?mid=1-moD7zpSwpSFLVzdoODYrhnBLq--m2I"
 
+    known_languages = ("ru", "en", "he")
     channels_list = {
     }
 

@@ -1,3 +1,4 @@
+from shared.config import Config
 from database.sql import DataBase
 
 
@@ -112,7 +113,7 @@ class MultiLang:
         return self.lang
 
     def set_lang(self, lang):
-        self.lang = lang
+        self.lang = lang if lang in Config.known_languages else "en"
 
     def msg(self, msg_id, lang: str = ""):
         lang_selector = self.lang if lang == "" else lang

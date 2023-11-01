@@ -1,5 +1,6 @@
 from aiogram.types import Message
 from database.sql import DataBase
+from shared.config import Config
 
 
 class UserInfo:
@@ -28,7 +29,7 @@ class UserInfo:
         if user:
             self.user_data["user_id"] = user[0]
             self.user_data["first_name"] = user[1]
-            self.user_data["lang"] = user[2]
+            self.user_data["lang"] = user[2] if user[2] in Config.known_languages else "en"
             self.user_data["role"] = user[3]
 
     def get_id(self):
@@ -55,6 +56,5 @@ class UserInfo:
     def is_admin(self):
         if self.is_valid_user() and self.user_data["role"] == "admin":
             return True
-
         return False
 
