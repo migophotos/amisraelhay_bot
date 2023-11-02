@@ -85,7 +85,7 @@ async def load_document(message: types.Message):
     bot.ml.set_lang(ui.get_language())
 
     if message.chat.id != Config.admin_id:
-        await message.answer(bot.ml.msg("no_rights"))
+        await message.answer(bot.ml.msg("no_rights").format(ui.get_first_name()))
         return False
 
     if message.content_type == ContentType.DOCUMENT and message.document.mime_type.startswith('text/'):

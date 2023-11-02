@@ -1,3 +1,4 @@
+import aiogram.exceptions
 from datetime import datetime, timedelta
 
 from aiogram import Bot
@@ -40,8 +41,12 @@ class ContentProvider:
             id, name, lang, _ = ContentProvider.users_list.pop()
             if id != Config.admin_id:
                 text = self.bot.ml.msg("update_db_msg", lang).format(name)
-                await self.bot.send_message(id, text=text)
-            await self.bot.send_message(Config.admin_id, text=f"Update sent to {name}: {id}")
+                try:
+                    await self.bot.send_message(id, text=text)
+                except aiogram.exceptions.Any as err:
+                    await self.bot.send_message(Config.admin_id, text=f"Error to send update message to {name}: {id}")
+                finally:
+                    await self.bot.send_message(Config.admin_id, text=f"Update sent to {name}: {id}")
         else:
             if self.broadcast_to_users_jobId:
                 self.scheduler.remove_job(self.broadcast_to_users_jobId)
