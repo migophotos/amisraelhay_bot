@@ -107,8 +107,11 @@ MESSAGES_HE = {
 }
 
 
+default_languages = MESSAGES_RU
+
+
 class MultiLang:
-    def __init__(self, db: DataBase, lang: str = "en"):
+    def __init__(self, db: DataBase, lang: str = Config.default_language):
         self.lang = lang
         self.db = db
 
@@ -116,13 +119,18 @@ class MultiLang:
         return self.lang
 
     def set_lang(self, lang):
-        self.lang = lang if lang in Config.known_languages else "en"
+        self.lang = lang if lang in Config.known_languages else Config.default_language
 
     def msg(self, msg_id, lang: str = ""):
         lang_selector = self.lang if lang == "" else lang
         if lang_selector == "ru":
-            return MESSAGES_RU.get(msg_id)
+            msg_text = MESSAGES_RU.get(msg_id)
         elif lang_selector == "he":
-            return MESSAGES_HE.get(msg_id)
+            msg_text = MESSAGES_HE.get(msg_id)
         else:
-            return MESSAGES_EN.get(msg_id)
+            msg_text = MESSAGES_EN.get(msg_id)
+
+        if msg_text is None:
+            msg_text = default_languages.get(msg_id)
+
+        return msg_text

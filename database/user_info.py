@@ -15,7 +15,7 @@ class UserInfo:
         if message.from_user.is_bot is True:
             u_id = message.chat.id
             u_name = message.chat.first_name
-            u_lang = 'en'
+            u_lang = Config.default_language
 
         user = await self.db.get_user(u_id)
         if len(user) == 0:
@@ -29,7 +29,7 @@ class UserInfo:
         if user:
             self.user_data["user_id"] = user[0]
             self.user_data["first_name"] = user[1]
-            self.user_data["lang"] = user[2] if user[2] in Config.known_languages else "en"
+            self.user_data["lang"] = user[2] if user[2] in Config.known_languages else Config.default_language
             self.user_data["role"] = user[3]
 
     def get_id(self):

@@ -141,7 +141,8 @@ async def cmd_all_messages(msg: Message):
         message = f"<b>{msg.text}</b>:\n\n"
         for co in content:
             if co[descr_index[lang]]:
-                message += f"{co[descr_index[lang]]} - <b>{co[link_index]}</b>\n\n"
+                # await msg.answer(f"{co[descr_index[lang]]} - {co[link_index]}\n\n", disable_web_page_preview=True)
+                message += f"{co[descr_index[lang]]} - {co[link_index]}\n\n"
         await msg.answer(message, disable_web_page_preview=True)
         return True
 
