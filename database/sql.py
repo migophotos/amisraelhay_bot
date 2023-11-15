@@ -61,7 +61,11 @@ class DataBase:
                 descr_ru TEXT,
                 descr_en TEXT,
                 descr_he TEXT,
-                link TEXT);
+                link TEXT,
+                category_uk,
+                descr_uk,
+                category_fr,
+                descr_fr);
                 """)
                 self.connect.commit()
         except sqlite3.Error as er:
@@ -80,7 +84,7 @@ class DataBase:
         with self.connect:
             csv_data = csv.reader(csv_data_list)
             for row in csv_data:
-                self.cursor.execute(f"INSERT INTO content VALUES(?, ?, ?, ?, ?, ?, ?);", row)
+                self.cursor.execute(f"INSERT INTO content VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);", row)
 
     async def get_all_content(self):
         with self.connect:
@@ -89,8 +93,10 @@ class DataBase:
     async def get_content_by_cat(self, category, lang):
         categories = {
             "ru": "category_ru",
+            "uk": "category_uk",
             "en": "category_en",
-            "he": "category_he"
+            "he": "category_he",
+            "fr": "category_fr"
         }
         with self.connect:
             return self.cursor.execute(f"SELECT * FROM content WHERE {categories[lang]}=(?)", [category]).fetchall()
@@ -102,12 +108,12 @@ class DataBase:
     async def add_content(self, content: tuple):
         """
 
-        :param content: (category_ru, category_en, category_he, descr_ru, descr_en, descr_he, link)
+        :param content: (category_ru, category_en, category_he, descr_ru, descr_en, descr_he, link, category_uk, descr_uk, category_fr, descr_fr)
         :return:
         """
         try:
             with self.connect:
-                return self.cursor.execute("INSERT INTO content VALUES(?, ?, ?, ?, ?, ?, ?);", content)
+                return self.cursor.execute("INSERT INTO content VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);", content)
         except sqlite3.Error as error:
             print("Failed to add content", error)
 

@@ -47,7 +47,7 @@ async def cmd_help(msg: Message, edit_message=False):
 
     builder = ReplyKeyboardBuilder()
     categories_index = {
-        "ru": 0, "en": 1, "he": 2
+        "ru": 0, "en": 1, "he": 2, "uk": 7, "fr": 9
     }
     categories_list = []
     for co in content:
@@ -136,7 +136,7 @@ async def cmd_all_messages(msg: Message):
 
     content = await db.get_content_by_cat(msg.text, lang)
     if len(content):
-        descr_index = {"ru": 3, "en": 4, "he": 5}
+        descr_index = {"ru": 3, "en": 4, "he": 5, "uk": 8, "fr": 10}
         link_index = 6
         message = f"<b>{msg.text}</b>:\n\n"
         for co in content:

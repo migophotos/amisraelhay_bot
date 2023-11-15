@@ -64,6 +64,6 @@ async def content_selector(call: CallbackQuery, callback_data: ContentTypeCbFact
     if content_type == 'external_csv':
         await call.message.answer(ml.msg("load_csv_file__prompt"))
     elif content_type == 'external_json':
-        await call.message.answer("Sorry, this option ot yet implemented")
+        await call.message.answer("Sorry, this option not yet implemented")
 
     await call.answer()

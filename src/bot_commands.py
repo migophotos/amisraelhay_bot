@@ -13,8 +13,16 @@ async def set_bot_name(bot: Bot):
             "en",
         ),
         (
+            'Israël vit !',
+            "fr",
+        ),
+        (
             'Израиль жив!',
             "ru",
+        ),
+        (
+            'Живе Ізраїль!',
+            "uk",
         ),
         (
             'עם ישראל חי!',
@@ -39,7 +47,8 @@ async def set_commands(bot: Bot):
     '''
     data = [
         (
-            "Useful links during the war",
+            "Useful links during the war\n\n"
+            "Contact the author: https://t.me/MigoPhotos",
             "This bot will help you quickly find the information you need during Israel's war with Hamas",
             "en",
             [
@@ -52,8 +61,37 @@ async def set_commands(bot: Bot):
             BotCommandScopeDefault(),
         ),
         (
-            "Полезные ссылки на время войны",
-            "Этот бот поможет вам быстро найти нужную информацию во время войны Израиля с ХАМАС",
+            "Liens utiles pendant la guerre\n\n"
+            "Contacter l'auteur : https://t.me/MigoPhotos",
+            "Ce bot vous aidera à trouver rapidement les informations dont vous avez besoin pendant la guerre entre Israël et le Hamas",
+            "fr",
+            [
+                BotCommand(command='start', description='Démarrer le bot'),
+                BotCommand(command='help', description='Afficher les informations et les catégories'),
+                BotCommand(command='language', description="Changer la langue de l'interface utilisateur"),
+                BotCommand(command='profile', description='Afficher mon profil'),
+                BotCommand(command='admin', description="Modifier les paramètres (pour l'administrateur uniquement)")
+            ],
+            BotCommandScopeDefault(),
+        ),
+        (
+            "Корисні посилання під час війни\n\n"
+            "Зв'язатися з автором: https://t.me/MigoPhotos",
+            "Цей бот допоможе вам швидко знайти потрібну інформацію під час війни Ізраїлю з ХАМАС\n\n",
+            "uk",
+            [
+                BotCommand(command='start', description='Запустити бота'),
+                BotCommand(command='help', description='Показати інформацію та категорії'),
+                BotCommand(command='language', description='Змінити мову інтерфейсу'),
+                BotCommand(command='profile', description='Показати мій профіль'),
+                BotCommand(command='admin', description='Змінити налаштування (лише для адміністратора)')
+            ],
+            BotCommandScopeDefault(),
+        ),
+        (
+            "Полезные ссылки на время войны\n\n"
+            "Связаться с автором: https://t.me/MigoPhotos",
+            "Этот бот поможет вам быстро найти нужную информацию во время войны Израиля с ХАМАС\n\n",
             "ru",
             [
                 BotCommand(command='start', description='Запуск бота'),
@@ -65,7 +103,8 @@ async def set_commands(bot: Bot):
             BotCommandScopeDefault(),
         ),
         (
-            "קישורים שימושיים במהלך המלחמה",
+            "קישורים שימושיים במהלך המלחמה\n\n"
+            "צור קשר עם המחבר: https://t.me/MigoPhotos",
             "הבוט הזה יעזור לך למצוא במהירות את המידע שאתה צריך במהלך המלחמה של ישראל בחמאס",
             "he",
             [

@@ -33,7 +33,7 @@ MESSAGES_RU = {
     "en_prompt": 'Обновить Английский промпт',
     "he_prompt": 'Обновить промпт для Иврита',
     "load_csv_file__prompt": 'Загрузите ваш CSV файл со ссылками в формате:\n'
-                             'cat_ru, cat_en, cat_he, descr_ru, descr_en, descr_he, link\n'
+                             'cat_ru, cat_en, cat_he, descr_ru, descr_en, descr_he, link\n, cat_uk, descr_uk, car_fr, descr_fr'
                              '<b>ваш файл должен содержать название колонок в первой строке!</b>\n',
 }
 
@@ -69,8 +69,79 @@ MESSAGES_EN = {
     "en_prompt": 'Update English Prompt',
     "he_prompt": 'Update Hebrew Prompt',
     "load_csv_file__prompt": 'Upload your CSV file with links in the following format:\n'
-                             'cat_ru, cat_en, cat_he, descr_ru, descr_en, descr_he, link\n'
+                             'cat_ru, cat_en, cat_he, descr_ru, descr_en, descr_he, link\n, cat_uk, descr_uk, car_fr, descr_fr'
                              '<b>Note: your file must contain the names of the columns in the first line!</b>\n',
+}
+MESSAGES_FR = {
+    "hello": "Bonjour",
+    "your_role": "Ton rôle",
+    "your_lang": "Votre langue",
+    "your_id": "Votre identifiant",
+    "about_bot": "Ce bot contient des liens vers des ressources en ligne qui pourraient vous être utiles pendant la guerre d'Israël contre le Hamas.",
+    "help_text": """Cliquez sur le bouton "Afficher les catégories" en bas de l'écran ou utilisez la commande /help""",
+    "lang_text": 'Utilisez la commande /language pour sélectionner une langue de communication et afficher les informations.',
+    "admin_text": """Utilisez la commande /admin pour définir l'heure d'envoi des messages et gérer les messages""",
+    "bombshelters": """Carte des abris anti-aériens à travers le pays""",
+    "preferred_language": """Vous avez sélectionné une langue anglaise, veuillez redémarrer le bot - /start""",
+    "change_language": """Sélectionnez la langue de communication""",
+    "no_rights": """<b>Bonjour {0} !</b>\n Malheureusement, vous n'avez pas les droits d'accès à cette commande....\n<b>Au revoir!</b>""",
+    "update_db_msg": "<b>Bonjour {0}!</b>\nLa base de données du bot a été mise à jour.\nExécutez la commande /start pour redémarrer le bot.",
+    "show_categories": 'Afficher les catégories',
+    "admin_panel": 'Admin Panel',
+    "scheduler_manage": 'Scheduler...',
+    "content_manage": 'Content...',
+    "start_scheduler": 'Start Scheduler',
+    "restart_scheduler": 'Restart Scheduler',
+    "stop_scheduler": 'Stop Scheduler',
+    "unknown_cmd": 'Unknown command, check the syntax!',
+
+    "select_content_type": 'Select content type',
+    "openai": 'Automatically generate with OpenAI',
+    "external_csv": 'External CSV file',
+    "external_json": 'External JSON file',
+    "back_to_admin": 'Return to Admin panel',
+    "ru_prompt": 'Update Russian Prompt',
+    "en_prompt": 'Update English Prompt',
+    "he_prompt": 'Update Hebrew Prompt',
+    "load_csv_file__prompt": 'Upload your CSV file with links in the following format:\n'
+                             'cat_ru, cat_en, cat_he, descr_ru, descr_en, descr_he, link\n, cat_uk, descr_uk, car_fr, descr_fr'
+                             '<b>Note: your file must contain the names of the columns in the first line!</b>\n',
+}
+
+MESSAGES_UK = {
+    "hello": "Привіт",
+    "your_role": "Ваша роль",
+    "your_lang": "Твоя мова",
+    "your_id": "Ваше посвідчення особи",
+    "about_bot": "Цей бот містить посилання на онлайн-ресурси, які можуть бути корисними під час війни Ізраїлю проти ХАМАС",
+    "help_text": 'Натисніть кнопку «Показати категорії» внизу екрана або скористайтеся командою /help',
+    "lang_text": 'Використовуйте команду /language, щоб вибрати мову для спілкування та відображення інформації.',
+    "admin_text": 'Використовуйте команду /admin, щоб встановити час надсилання повідомлень і керувати повідомленнями',
+    "bombshelters": 'Карта бомбосховищ по Ізраїлю',
+    "preferred_language": 'Ви вибрали українську мову, перезапустіть бота - /start',
+    "change_language": 'Виберіть мову спілкування',
+    "no_rights": '<b>Привіт, {0}!</b>\nНа жаль, ви не маєте прав доступу до цієї команди...\n<b>До побачення!</b>',
+    "update_db_msg": "<b>Привіт, {0}!</b>\nБазу даних бота оновлено.\nВиконайте команду /start, щоб перезапустити бота.",
+    "admin_panel": 'Панель адміністратора',
+    "scheduler_manage": 'Планувальник...',
+    "content_manage": 'Зміст...',
+    "start_scheduler": 'Запустіть планувальник',
+    "restart_scheduler": 'Перезапустіть планувальник',
+    "stop_scheduler": 'Зупинити планувальник',
+    "unknown_cmd": 'Невідома команда, перевірте синтаксис!',
+    "show_categories": 'Показати категорії',
+
+    "select_content_type": 'Виберіть тип вмісту',
+    "openai": 'Автоматично генерувати за допомогою OpenAI',
+    "external_csv": 'Зовнішній файл CSV',
+    "external_json": 'Зовнішній файл JSON',
+    "back_to_admin": 'Повернутися до панелі адміністратора',
+    "ru_prompt": 'Update Russian Prompt',
+    "en_prompt": 'Update English Prompt',
+    "he_prompt": 'Update Hebrew Prompt',
+    "load_csv_file__prompt": 'Завантажте файл CSV із посиланнями в такому форматі:\n'
+                             'cat_ru, cat_en, cat_he, descr_ru, descr_en, descr_he, link\n, cat_uk, descr_uk, car_fr, descr_fr'
+                             '<b>Примітка: ваш файл повинен містити назви стовпців у першому рядку!</b>\n',
 
 }
 
@@ -105,7 +176,7 @@ MESSAGES_HE = {
     "en_prompt": 'עדכון הנחיה לאנגלית',
     "he_prompt": 'עדכון הנחיה לעברית',
     "load_csv_file__prompt": 'העלה את קובץ ה-CSV שלך עם קישורים בפורמט הבא:\n'
-                             'cat_ru, cat_en, cat_he, descr_ru, descr_en, descr_he, link\n'
+                             'cat_ru, cat_en, cat_he, descr_ru, descr_en, descr_he, link\n, cat_uk, descr_uk, car_fr, descr_fr'
                              'הקובץ שלך חייב (!) להכיל את שמות העמודות בשורה הראשונה!\n',
 }
 
@@ -128,6 +199,10 @@ class MultiLang:
         lang_selector = self.lang if lang == "" else lang
         if lang_selector == "ru":
             msg_text = MESSAGES_RU.get(msg_id)
+        elif lang_selector == "uk":
+            msg_text = MESSAGES_UK.get(msg_id)
+        elif lang_selector == "fr":
+            msg_text = MESSAGES_FR.get(msg_id)
         elif lang_selector == "he":
             msg_text = MESSAGES_HE.get(msg_id)
         else:

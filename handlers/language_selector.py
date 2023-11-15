@@ -21,8 +21,12 @@ async def cmd_language(msg: Message, bot: Bot):
     buttons = [
         InlineKeyboardButton(text="Русский",
                              callback_data=LanguageCbFactory(type="change_language", selected="ru").pack()),
+        InlineKeyboardButton(text="Українська мова",
+                             callback_data=LanguageCbFactory(type="change_language", selected="uk").pack()),
         InlineKeyboardButton(text="English",
                              callback_data=LanguageCbFactory(type="change_language", selected="en").pack()),
+        InlineKeyboardButton(text="French",
+                             callback_data=LanguageCbFactory(type="change_language", selected="fr").pack()),
         InlineKeyboardButton(text="עברית",
                              callback_data=LanguageCbFactory(type="change_language", selected="he").pack()),
     ]
