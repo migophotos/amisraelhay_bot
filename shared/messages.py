@@ -10,7 +10,8 @@ MESSAGES_RU = {
     "about_bot": 'Этот бот содержит ссылки на онлайн ресурсы, которые могут быть полезны вам во время войны Израиля против Хамаса',
     "help_text": 'Нажмите на кнопку "Показать категории" внизу экрана или используйте команду /help',
     "lang_text": 'Используйте команду /language для выбора языка общения и отображения иинформации',
-    "admin_text": 'Используйте команду /admin для установки времени отправки сообщений и управления сообщениями',
+    "admin_text": 'Используйте команду /admin для установки времени отправки сообщений и управления сообщениями\n'
+                  '- cmd:users отображает список пользователей',
     "bombshelters": 'Карта бомбоубежищ по всей стране',
     "preferred_language": 'Вы выбрали Русский язык, теперь перезапустите бота /start',
     "change_language": 'Выберите Язык Общения',
@@ -45,7 +46,8 @@ MESSAGES_EN = {
     "about_bot": "This bot contains links to online resources that may be useful to you during Israel's war against Hamas",
     "help_text": 'Click on the "Show Categories" button at the bottom of the screen or use the /help command',
     "lang_text": 'Use the /language command to select a language for communication and display information.',
-    "admin_text": 'Use the /admin command to set the time of sending messages and to manage messages',
+    "admin_text": 'Use the /admin command to set the time of sending messages and to manage messages\n'
+                  '- cmd:users show active users list',
     "bombshelters": 'Map of air raid shelters across the country',
     "preferred_language": 'You have selected an English language, please restart bot - /start',
     "change_language": 'Select Language of Communication',

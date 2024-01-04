@@ -108,6 +108,7 @@ async def check_admin_rights(message: Message, name: str) -> bool:
         warning = message.bot.ml.msg("no_rights").format(name)
         await message.answer(warning)
         return False
+    return True
 
 
 # Attention! This message handler should always remain last!
@@ -128,6 +129,15 @@ async def cmd_all_messages(msg: Message):
     if cmd == 'exit:sc':
         if await check_admin_rights(msg, ui.get_first_name()):
             await show_admin_keyboard(msg)
+            return True
+
+    if cmd == 'cmd:users':
+        if await check_admin_rights(msg, ui.get_first_name()):
+            data = await db.get_users()
+            text = ""
+            for key in data:
+                text += f'{key[0]}: {key[1]}, lang: {key[2]}\n'
+            await msg.answer(text)
             return True
 
     if msg.text == msg.bot.ml.msg("show_categories"):
